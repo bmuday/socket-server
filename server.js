@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const http = require("http");
 const { createSocket } = require("./socket");
+const PORT = process.env.PORT || 5000;
 
 async function main() {
   const expressApp = express();
@@ -14,8 +15,8 @@ async function main() {
     res.send("<h1>Hello world</h1>");
   });
 
-  httpServer.listen(3000, () => {
-    console.log("Server listening on http://localhost:3000");
+  httpServer.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}...`);
   });
 }
 
