@@ -24,9 +24,13 @@ function createMessage(content, id) {
 async function createSocket(httpServer) {
   let messages = [];
 
+  const origin = process.env.PROD
+    ? process.env.ORIGIN
+    : "http://localhost:5173";
+  console.log("origin", origin);
   const io = new Server(httpServer, {
     cors: {
-      origin: "http://localhost:5173",
+      origin,
     },
   });
 
